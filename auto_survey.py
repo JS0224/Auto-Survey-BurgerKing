@@ -3,15 +3,15 @@
     This project is to get special code after survey of burgerking
 '''
 #2020_02_07 //request test
+from selenium import webdriver
 
-import urllib.request as req
+url = "http://kor.tellburgerking.com"
+chrome_driver_path = "./chromedriver.exe"
 
-url = "http://www.postech.ac.kr"
-def request(url):
-    response = req.urlopen(url) #object
-    byte_data = response.read() #binary
-    text_data = byte_data.decode('utf-8') #text
-    return text_data
+#get chrome_browser object
+chrome_browser = webdriver.Chrome(chrome_driver_path)
+chrome_browser.get(url)
 
-#=========== print contents of url =============
-#print(request(url))
+#get button by name
+next_btn = chrome_browser.find_element_by_name("NextButton")
+next_btn.submit()
