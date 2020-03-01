@@ -71,3 +71,19 @@ clickNextButton()
 ####PAGE13,14
 clickSeveralInPage()
 clickNextButton()
+
+####PAGE15
+check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
+check_inputs[0].click()
+clickNextButton()
+
+####PAGE16
+check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
+check_inputs[-1].click()
+clickNextButton()
+
+####PAGE17,18,19,20
+clickSeveralInPage()
+clickSeveralInPage()
+clickSeveralInPage()
+clickSeveralInPage()
