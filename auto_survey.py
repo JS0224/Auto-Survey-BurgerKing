@@ -45,7 +45,7 @@ radio_input = chrome_browser.find_element_by_class_name("radioSimpleInput")
 radio_input.click()
 clickNextButton()
 
-def clickSeveralInPage:
+def clickSeveralInPage():
     radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
     for i,v in enumerate(radio_inputs):
         if i % 5 == 0:
@@ -56,3 +56,18 @@ def clickSeveralInPage:
 clickSeveralInPage()
 clickSeveralInPage()
 clickSeveralInPage()
+
+####PAGE11
+radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
+radio_inputs[0].click()
+radio_inputs[11].click()
+clickNextButton()
+
+####PAGE12
+radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
+radio_inputs[1].click()
+clickNextButton()
+
+####PAGE13,14
+clickSeveralInPage()
+clickNextButton()
