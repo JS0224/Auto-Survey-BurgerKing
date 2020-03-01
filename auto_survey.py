@@ -5,6 +5,7 @@
 #2020_02_07 //request test
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 
 url = "http://kor.tellburgerking.com"
 chrome_driver_path = "./chromedriver.exe"
@@ -17,9 +18,7 @@ def clickNextButton():
     next_btn = chrome_browser.find_element_by_id("NextButton")
     next_btn.submit()
 
-
 #####PAGE1 - Start!
-#get button by name
 clickNextButton()
 
 #####PAGE2 - Code typing
@@ -28,7 +27,6 @@ for i,v in enumerate(code):
     name = "CN" + str(i+1)
     cn = chrome_browser.find_element_by_name(name).send_keys(v)
 clickNextButton()
-
 
 def clickOneInPage():
     radio_input = chrome_browser.find_element_by_class_name("radioButtonHolder")
@@ -87,3 +85,21 @@ clickSeveralInPage()
 clickSeveralInPage()
 clickSeveralInPage()
 clickSeveralInPage()
+clickSeveralInPage()
+
+####PAGE21,22,23
+clickOneInPage()
+clickOneInPage()
+clickOneInPage()
+
+####PAGE24,25
+select = Select(chrome_browser.find_element_by_id('R069000'))
+select.select_by_index(3)
+select = Select(chrome_browser.find_element_by_id('R070000'))
+select.select_by_index(6)
+clickNextButton()
+clickNextButton()
+
+####Final page
+code = chrome_browser.find_elements_by_class_name("ValCode")
+print(code.text)
