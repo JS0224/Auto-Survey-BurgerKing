@@ -39,3 +39,20 @@ def clickOneInPage():
 clickOneInPage()
 clickOneInPage()
 clickOneInPage()
+
+#####PAGE7
+radio_input = chrome_browser.find_element_by_class_name("radioSimpleInput")
+radio_input.click()
+clickNextButton()
+
+def clickSeveralInPage:
+    radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
+    for i,v in enumerate(radio_inputs):
+        if i % 5 == 0:
+            radio_inputs[i].click()
+    clickNextButton()
+
+####PAGE8,9,10
+clickSeveralInPage()
+clickSeveralInPage()
+clickSeveralInPage()
