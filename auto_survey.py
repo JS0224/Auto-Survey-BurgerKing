@@ -13,13 +13,29 @@ chrome_driver_path = "./chromedriver.exe"
 chrome_browser = webdriver.Chrome(chrome_driver_path)
 chrome_browser.get(url)
 
+def clickNextButton():
+    next_btn = chrome_browser.find_element_by_id("NextButton")
+    next_btn.submit()
+
+
 #####PAGE1 - Start!
 #get button by name
-next_btn = chrome_browser.find_element_by_name("NextButton")
-next_btn.submit()
+clickNextButton()
 
 #####PAGE2 - Code typing
 code = ["821","948","010","037","113","2"]
 for i,v in enumerate(code):
     name = "CN" + str(i+1)
     cn = chrome_browser.find_element_by_name(name).send_keys(v)
+clickNextButton()
+
+
+def clickOneInPage():
+    radio_input = chrome_browser.find_element_by_class_name("radioButtonHolder")
+    radio_input.click()
+    clickNextButton()
+
+#####PAGE3,4,5
+clickOneInPage()
+clickOneInPage()
+clickOneInPage()
