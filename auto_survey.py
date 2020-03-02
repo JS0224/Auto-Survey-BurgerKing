@@ -19,6 +19,7 @@ chrome_browser.get(url)
 #user code
 __code = "8219480100371132"
 
+#==============================Functions=========================
 #split serial number into Code
 def splitNumInCode(serial_num):
     #serial_num is string type
@@ -58,6 +59,7 @@ def clickQualityCustomized(customize_class,customize_question_list):
         inputs[question].click()
     clickNextButton()
 
+#===============================Loop===============================
 for i,type in enumerate(question_type):
     if type == 0:
         clickNextButton()
