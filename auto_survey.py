@@ -6,6 +6,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from question_data import question_type
 
 url = "http://kor.tellburgerking.com"
 chrome_driver_path = "./chromedriver.exe"
@@ -18,88 +19,55 @@ def clickNextButton():
     next_btn = chrome_browser.find_element_by_id("NextButton")
     next_btn.submit()
 
-#####PAGE1 - Start!
-clickNextButton()
-
-#####PAGE2 - Code typing
-code = ["821","948","010","037","113","2"]
-for i,v in enumerate(code):
-    name = "CN" + str(i+1)
-    cn = chrome_browser.find_element_by_name(name).send_keys(v)
-clickNextButton()
-
-def clickOneInPage():
+def clickOption():
     radio_input = chrome_browser.find_element_by_class_name("radioButtonHolder")
     radio_input.click()
     clickNextButton()
 
-#####PAGE3,4,5
-clickOneInPage()
-clickOneInPage()
-clickOneInPage()
-
-#####PAGE6
-radio_input = chrome_browser.find_element_by_class_name("radioSimpleInput")
-radio_input.click()
-clickNextButton()
-
-def clickSeveralInPage():
+def clickQuality():
     radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
     for i,v in enumerate(radio_inputs):
         if i % 5 == 0:
             radio_inputs[i].click()
     clickNextButton()
 
-####PAGE 7,8,9
-clickSeveralInPage()
-clickSeveralInPage()
-clickSeveralInPage()
-
-####PAGE10
-radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
-radio_inputs[0].click()
-radio_inputs[11].click()
-clickNextButton()
-
-####PAGE11
-radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
-radio_inputs[1].click()
-clickNextButton()
-
-####PAGE12,13
-clickSeveralInPage()
-clickNextButton()
-
-####PAGE14
-check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
-check_inputs[0].click()
-clickNextButton()
-
-####PAGE15
-check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
-check_inputs[-1].click()
-clickNextButton()
-
-####PAGE 16,17,18,19,20
-clickSeveralInPage()
-clickSeveralInPage()
-clickSeveralInPage()
-clickSeveralInPage()
-clickSeveralInPage()
-
-####PAGE21,22,23
-clickOneInPage()
-clickOneInPage()
-clickOneInPage()
-
-####PAGE24,25
-select = Select(chrome_browser.find_element_by_id('R069000'))
-select.select_by_index(3)
-select = Select(chrome_browser.find_element_by_id('R070000'))
-select.select_by_index(6)
-clickNextButton()
-clickNextButton()
-
-####Final page
-code = chrome_browser.find_elements_by_class_name("ValCode")
-print(code.text)
+for i,type in enumerate(question_type):
+    if type == 0:
+        clickNextButton()
+    elif type == 1:
+        clickOption()
+    elif type == 2:
+        clickQuality()
+    elif type == 3:
+        if i == 1:
+            code = ["821","948","010","037","113","2"]
+            for i,v in enumerate(code):
+                name = "CN" + str(i+1)
+                cn = chrome_browser.find_element_by_name(name).send_keys(v)
+            clickNextButton()
+        elif i == 9:
+            radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
+            radio_inputs[0].click()
+            radio_inputs[11].click()
+            clickNextButton()
+        elif i == 10:
+            radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
+            radio_inputs[1].click()
+            clickNextButton()
+        elif i == 13:
+            check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
+            check_inputs[0].click()
+            clickNextButton()
+        elif i == 14:
+            check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
+            check_inputs[-1].click()
+            clickNextButton()
+        elif i == 23:
+            select = Select(chrome_browser.find_element_by_id('R069000'))
+            select.select_by_index(3)
+            select = Select(chrome_browser.find_element_by_id('R070000'))
+            select.select_by_index(6)
+            clickNextButton()
+        elif i == 25:
+            code = chrome_browser.find_element_by_class_name("ValCode")
+            print(code.text)
