@@ -31,6 +31,12 @@ def clickQuality():
             radio_inputs[i].click()
     clickNextButton()
 
+def clickQualityCustomized(customize_class,customize_question_list):
+    inputs = chrome_browser.find_elements_by_class_name(customize_class)
+    for question in customize_question_list:
+        inputs[question].click()
+    clickNextButton()
+
 for i,type in enumerate(question_type):
     if type == 0:
         clickNextButton()
@@ -46,22 +52,13 @@ for i,type in enumerate(question_type):
                 cn = chrome_browser.find_element_by_name(name).send_keys(v)
             clickNextButton()
         elif i == 9:
-            radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
-            radio_inputs[0].click()
-            radio_inputs[11].click()
-            clickNextButton()
+            clickQualityCustomized("radioSimpleInput",[0,-1])
         elif i == 10:
-            radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
-            radio_inputs[1].click()
-            clickNextButton()
+            clickQualityCustomized("radioSimpleInput",[-1])
         elif i == 13:
-            check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
-            check_inputs[0].click()
-            clickNextButton()
+            clickQualityCustomized("checkboxSimpleInput",[0])
         elif i == 14:
-            check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
-            check_inputs[-1].click()
-            clickNextButton()
+            clickQualityCustomized("checkboxSimpleInput",[-1])
         elif i == 23:
             select = Select(chrome_browser.find_element_by_id('R069000'))
             select.select_by_index(3)
