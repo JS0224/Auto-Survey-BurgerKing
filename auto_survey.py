@@ -38,7 +38,7 @@ clickOneInPage()
 clickOneInPage()
 clickOneInPage()
 
-#####PAGE7
+#####PAGE6
 radio_input = chrome_browser.find_element_by_class_name("radioSimpleInput")
 radio_input.click()
 clickNextButton()
@@ -50,37 +50,37 @@ def clickSeveralInPage():
             radio_inputs[i].click()
     clickNextButton()
 
-####PAGE8,9,10
+####PAGE 7,8,9
 clickSeveralInPage()
 clickSeveralInPage()
 clickSeveralInPage()
 
-####PAGE11
+####PAGE10
 radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
 radio_inputs[0].click()
 radio_inputs[11].click()
 clickNextButton()
 
-####PAGE12
+####PAGE11
 radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
 radio_inputs[1].click()
 clickNextButton()
 
-####PAGE13,14
+####PAGE12,13
 clickSeveralInPage()
 clickNextButton()
 
-####PAGE15
+####PAGE14
 check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
 check_inputs[0].click()
 clickNextButton()
 
-####PAGE16
+####PAGE15
 check_inputs = chrome_browser.find_elements_by_class_name("checkboxSimpleInput")
 check_inputs[-1].click()
 clickNextButton()
 
-####PAGE17,18,19,20
+####PAGE 16,17,18,19,20
 clickSeveralInPage()
 clickSeveralInPage()
 clickSeveralInPage()
