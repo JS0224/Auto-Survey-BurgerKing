@@ -2,12 +2,13 @@
     The full right of this code is on Jisoo Kim
     This project is to get special code after survey of burgerking
 '''
-#2020_02_07 //request test
+#import library and variable
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from question_data import question_type
 
+#set url, path
 url = "http://kor.tellburgerking.com"
 chrome_driver_path = "./chromedriver.exe"
 
@@ -15,22 +16,23 @@ chrome_driver_path = "./chromedriver.exe"
 chrome_browser = webdriver.Chrome(chrome_driver_path)
 chrome_browser.get(url)
 
+#click next button
 def clickNextButton():
     next_btn = chrome_browser.find_element_by_id("NextButton")
     next_btn.submit()
-
+#click option in irrelevant options
 def clickOption():
     radio_input = chrome_browser.find_element_by_class_name("radioButtonHolder")
     radio_input.click()
     clickNextButton()
-
+#click qulity in options(best option only)
 def clickQuality():
     radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
     for i,v in enumerate(radio_inputs):
         if i % 5 == 0:
             radio_inputs[i].click()
     clickNextButton()
-
+#customized answer for qulity question
 def clickQualityCustomized(customize_class,customize_question_list):
     inputs = chrome_browser.find_elements_by_class_name(customize_class)
     for question in customize_question_list:
@@ -45,7 +47,7 @@ for i,type in enumerate(question_type):
     elif type == 2:
         clickQuality()
     elif type == 3:
-        if i == 1:
+        if i == 1: #Input Code
             code = ["821","948","010","037","113","2"]
             for i,v in enumerate(code):
                 name = "CN" + str(i+1)
@@ -59,12 +61,12 @@ for i,type in enumerate(question_type):
             clickQualityCustomized("checkboxSimpleInput",[0])
         elif i == 14:
             clickQualityCustomized("checkboxSimpleInput",[-1])
-        elif i == 23:
+        elif i == 23: #Dropbox
             select = Select(chrome_browser.find_element_by_id('R069000'))
             select.select_by_index(3)
             select = Select(chrome_browser.find_element_by_id('R070000'))
             select.select_by_index(6)
             clickNextButton()
-        elif i == 25:
+        elif i == 25: #Get final code
             code = chrome_browser.find_element_by_class_name("ValCode")
             print(code.text)
