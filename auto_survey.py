@@ -38,11 +38,6 @@ def clickNextButton():
     next_btn = chrome_browser.find_element_by_id("NextButton")
     next_btn.submit()
 
-#click option in irrelevant options
-def clickOption():
-    radio_input = chrome_browser.find_element_by_class_name("radioButtonHolder")
-    radio_input.click()
-
 #click qulity in options(best option only)
 def clickQuality():
     radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
@@ -61,7 +56,7 @@ for i,type in enumerate(question_type):
     if type == 0:
         pass
     elif type == 1:
-        clickOption()
+        clickQualityCustomized("radioButtonHolder",[0])
     elif type == 2:
         clickQuality()
     elif type == 3:
