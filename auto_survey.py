@@ -38,16 +38,18 @@ def clickNextButton():
     next_btn = chrome_browser.find_element_by_id("NextButton")
     next_btn.submit()
 
-#click qulity in options(best option only)
-def clickQuality():
-    radio_inputs = chrome_browser.find_elements_by_class_name("radioSimpleInput")
-    for i,v in enumerate(radio_inputs):
-        if i % 5 == 0:
-            radio_inputs[i].click()
 
 #customized answer for qulity question
 def clickQualityCustomized(customize_class,customize_question_list):
     inputs = chrome_browser.find_elements_by_class_name(customize_class)
+    #when there is no answer
+    if customize_question_list == None:
+        for i,v in enumerate(inputs):
+            if i % 5 == 0:
+                inputs[i].click()
+        return
+
+    #when there is customized answer
     for question in customize_question_list:
         inputs[question].click()
 
@@ -58,7 +60,7 @@ for i,type in enumerate(question_type):
     elif type == 1:
         clickQualityCustomized("radioButtonHolder",[0])
     elif type == 2:
-        clickQuality()
+        clickQualityCustomized("radioSimpleInput", None)
     elif type == 3:
         if i == 1: #Input Code
             code = splitNumInCode(__code)
